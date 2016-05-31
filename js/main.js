@@ -10,6 +10,9 @@ var app = angular.module('tutorialWebApp', [
   'ngRoute'
 ]);
 
+// routing provides a virtual path i.e., index.html#/test
+// controller connects the dots, providing the glue between model and view
+
 /**
  * Configure the Routes
  */
@@ -17,6 +20,8 @@ app.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     // Home
     .when("/", {templateUrl: "partials/home.html", controller: "PageCtrl"})
+    // Test
+    .when("/test", {templateUrl: "partials/test.html", controller: "TestCtrl"})
     // Pages
     .when("/about", {templateUrl: "partials/about.html", controller: "PageCtrl"})
     .when("/faq", {templateUrl: "partials/faq.html", controller: "PageCtrl"})
@@ -29,6 +34,13 @@ app.config(['$routeProvider', function ($routeProvider) {
     // else 404
     .otherwise("/404", {templateUrl: "partials/404.html", controller: "PageCtrl"});
 }]);
+
+/**
+ * Controls Test page
+ */
+app.controller('TestCtrl', function () {
+  console.log("Test Controller reporting for duty");
+});
 
 /**
  * Controls the Blog
